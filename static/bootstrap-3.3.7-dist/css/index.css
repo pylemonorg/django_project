@@ -1,0 +1,10 @@
+
+.container-fluid{padding: 0px}
+.jumbotron{background: none;}
+#de_canvas{z-index: -1; position: absolute; top: 0px; width: 100%; border: none;}
+#content_box{width: 100%; margin: auto 0px; text-align: center;}
+.jumbotron .title{color: #ffffff; margin: 0px auto; text-align: center; letter-spacing:3px;}
+#search_div{max-width: 800px;margin: 0px auto; margin-top: 5%;}
+#search_show{background-color: #ffffff; max-width: 800px; margin:auto; margin-top: 1%; display: none;}
+/*#search_show .inline li{width: 60px;}*/
+/*#h1_title{width: 100px;margin: 0px auto;}*/

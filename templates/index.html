@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="static/bootstrap-3.3.7-dist/css/bootstrap-theme.css">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="static/bootstrap-3.3.7-dist/js/jquery1.12.4.min.js"></script>
+    <script src="static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="static/bootstrap-3.3.7-dist/css/index.css">
+    <script src="static/bootstrap-3.3.7-dist/js/index.js"></script>
+</head>
+<body>
+<iframe src="static/bootstrap-3.3.7-dist/js/a1.html" id="de_canvas"></iframe>
+<div class="container-fluid" id="content_box">
+    <div class="jumbotron">
+        <h1 class="title">模版搜索</h1>
+
+        {#        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>#}
+        <!-- /input-group -->
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="input-group input-group-lg" id="search_div">
+                <input type="text" class="form-control" placeholder="Search for..." id="search_input">
+                <span class="input-group-btn">
+                <button class="btn btn-danger" type="button" id="botton_go">Go!</button>
+
+            </span>
+            </div>
+        </form>
+        <div class="alert text-left" id="search_show" role="alert">
+{#                <span class="glyphicon glyphicon-exclamation-sign text-left" aria-hidden="true"></span>#}
+{#                <span class="sr-only text-left">Error:</span>#}
+{#                不存在 请重新搜索！！！ &nbsp;ヾ(×× ) ﾂ#}
+
+{#            <ul class="list-unstyled">#}
+{#                <li>...</li>#}
+{#                <li>...</li>#}
+{#                <li>...</li>#}
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
