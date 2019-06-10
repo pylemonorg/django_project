@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Pylemon</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 
@@ -12,38 +12,76 @@
     <script src="static/bootstrap-3.3.7-dist/js/jquery1.12.4.min.js"></script>
     <script src="static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="static/bootstrap-3.3.7-dist/css/index.css">
+
     <script src="static/bootstrap-3.3.7-dist/js/index.js"></script>
 </head>
 <body>
+{#<iframe src="static/bootstrap-3.3.7-dist/js/a{{ bg_index }}.html" id="de_canvas"></iframe>#}
 <iframe src="static/bootstrap-3.3.7-dist/js/a1.html" id="de_canvas"></iframe>
 <div class="container-fluid" id="content_box">
     <div class="jumbotron">
-        <h1 class="title">模版搜索</h1>
+        <h1 class="title">模版检索</h1>
 
         {#        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>#}
         <!-- /input-group -->
         <form action="" method="post">
             {% csrf_token %}
             <div class="input-group input-group-lg" id="search_div">
-                <input type="text" class="form-control" placeholder="Search for..." id="search_input" autocomplete="off">
+                <input type="text" onkeydown="if(event.keyCode==13){return false;}" class="form-control" placeholder="Search for..." id="search_input" autocomplete="off">
                 <span class="input-group-btn">
                 <button class="btn btn-danger" type="button" id="botton_go">Go!</button>
 
             </span>
             </div>
         </form>
-        <div class="alert text-left" id="search_show" role="alert">
+        <div class="alert text-left pre-scrollable" id="search_show" role="alert">
 {#                <span class="glyphicon glyphicon-exclamation-sign text-left" aria-hidden="true"></span>#}
 {#                <span class="sr-only text-left">Error:</span>#}
 {#                不存在 请重新搜索！！！ &nbsp;ヾ(×× ) ﾂ#}
 
-{#            <ul class="list-unstyled">#}
-{#                <li>...</li>#}
-{#                <li>...</li>#}
-{#                <li>...</li>#}
-            </ul>
         </div>
     </div>
 </div>
+<script>
+    // 获取浏览器大小
+    var html_width = document.body.clientWidth;
+    var html_height = window.innerHeight;
+    var body_height = document.body.scrollHeight;
+    // 判断 浏览器最大的显示高度
+    if (html_height < body_height) {
+        html_height = body_height;
+    }
+
+    // 更改背景大小
+    console.log('页面高度：' + html_height);
+    document.getElementById('de_canvas').style.height = html_height + 'px';
+    // document.getElementById('de_canvas').style.width= html_width + 'px';
+
+    // 搜索框页面垂直居中
+    // del_height 减去多余的高度
+    function div_position(del_height) {
+
+        $("#content_box").css({
+            position: "absolute",
+            left: ($(window).width() - $("#content_box").outerWidth()) / 2,
+            top: (html_height - $("#content_box").outerHeight()) / 2 - 100 - del_height
+        });
+    }
+
+
+    // $(window).resize(function () {
+    //     $("#content_box").css({
+    //         position: "absolute",
+    //         left: ($(window).width() - $("#content_box").outerWidth()) / 2,
+    //         top: (html_height - $("#content_box").outerHeight()) / 2 - 100
+    //     });
+    // });
+    $(window).resize(div_position(0));
+    // 切换背景
+    var bg_index = Math.floor(Math.random()*7+1);
+    $('#de_canvas').attr('src', '/static/bootstrap-3.3.7-dist/js/a'+ bg_index +'.html')
+
+</script>
+
 </body>
 </html>
